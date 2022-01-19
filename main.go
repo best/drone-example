@@ -11,5 +11,5 @@ import (
 )
 
 func main() {
-	fmt.Println("drone-example")
+	fmt.Println("running drone-example")
 }

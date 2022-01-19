@@ -4,8 +4,31 @@ type: docker
 name: default
 
 steps:
-  - name: greeting
-    image: golang:1.17
-    commands:
-      - go build -a -installsuffix cgo -o app .
-      - ./app
+  - name: build-master
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: hub.hczhang.cn/hczhang/drone-example
+      registry: hub.hczhang.cn
+      dockerfile: Dockerfile
+      tags: master
+    when:
+      event:
+        - push
+  - name: build-tag
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: hub.hczhang.cn/hczhang/drone-example
+      registry: hub.hczhang.cn
+      dockerfile: Dockerfile
+      tags: ${DRONE_TAG}
+    when:
+      event:
+        - tag
