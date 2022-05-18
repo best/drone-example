@@ -11,8 +11,8 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: hub.hczhang.cn/hczhang/drone-example
-      registry: hub.hczhang.cn
+      repo: hub.thislab.cn/hczhang/drone-example
+      registry: hub.thislab.cn
       dockerfile: Dockerfile
       tags: master
     when:
@@ -25,8 +25,8 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: hub.hczhang.cn/hczhang/drone-example
-      registry: hub.hczhang.cn
+      repo: hub.thislab.cn/hczhang/drone-example
+      registry: hub.thislab.cn
       dockerfile: Dockerfile
       tags: ${DRONE_TAG}
     when:
